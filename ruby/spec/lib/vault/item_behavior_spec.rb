@@ -4,6 +4,28 @@ require_relative '../../../lib/vault/item_behavior'
 describe Vault::ItemBehavior do
   subject { described_class.new(item) }
 
+  describe '#new' do
+    before(:each) do
+      subject
+    end
+
+    context 'when item quality starts bigger than MAX_QUALITY' do
+      let(:item) { Item.new('new item', 10, 100) }
+
+      it 'assigns MAX_QUALITY by default' do
+        expect(item.quality).to eq(described_class::MAX_QUALITY)
+      end
+    end
+
+    context 'when item quality starts lower than MIN_QUALITY' do
+      let(:item) { Item.new('new item', 10, -10) }
+
+      it 'assigns MIN_QUALITY by default' do
+        expect(item.quality).to eq(described_class::MIN_QUALITY)
+      end
+    end
+  end
+
   describe '#decrease_quality' do
     context 'when the day end' do
       let(:item) { Item.new('new item', 10, 10) }
@@ -23,7 +45,7 @@ describe Vault::ItemBehavior do
       context 'initial quality exceeds MAX_QUALITY' do
         let(:item) { Item.new('new item', 10, 99) }
 
-        it 'returns MAX_QUALITY - 1' do
+        it 'returns (MAX_QUALITY - 1)' do
           expect(subject.decrease_quality).to eq 49
         end
       end

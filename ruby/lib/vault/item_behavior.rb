@@ -2,10 +2,12 @@ module Vault
   # General Item Update Rules
   class ItemBehavior
     MAX_QUALITY = 50
+    MIN_QUALITY = 0
 
     def initialize(item)
       @item = item
       @item.quality = MAX_QUALITY if item.quality > MAX_QUALITY
+      @item.quality = MIN_QUALITY if item.quality < MIN_QUALITY
     end
 
     def perform
