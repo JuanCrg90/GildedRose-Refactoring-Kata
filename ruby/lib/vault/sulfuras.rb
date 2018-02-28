@@ -6,7 +6,7 @@ module Vault
     MAX_QUALITY = 80
 
     def initialize(item)
-      @item = item
+      super(item)
       @item.quality = MAX_QUALITY if item.quality != MAX_QUALITY
     end
 
