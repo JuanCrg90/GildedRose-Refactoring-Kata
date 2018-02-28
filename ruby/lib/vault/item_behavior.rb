@@ -29,5 +29,10 @@ module Vault
       @item.quality -= 1 unless @item.quality.zero?
       @item.quality
     end
+
+    def increase_quality
+      @item.quality += 1 if @item.quality < MAX_QUALITY
+      @item.quality
+    end
   end
 end
