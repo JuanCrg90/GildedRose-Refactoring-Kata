@@ -1,3 +1,5 @@
+require_relative './item_behavior'
+
 module Vault
   # Legendary item Sulfuras, Hand of Ragnaros
   class Sulfuras < ItemBehavior
