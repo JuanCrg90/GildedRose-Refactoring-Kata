@@ -26,19 +26,23 @@ describe Vault::ItemBehavior do
     end
   end
 
-  describe '#decrease_quality' do
+  describe '#update_quality' do
+    before(:each) do
+      subject.update_quality
+    end
+
     context 'when the day end' do
       let(:item) { Item.new('new item', 10, 10) }
 
       it 'decrease by 1' do
-        expect(subject.decrease_quality).to eq 9
+        expect(item.quality).to eq 9
       end
 
       context 'and quality is already 0' do
         let(:item) { Item.new('new item', 10, 0) }
 
         it 'returns 0' do
-          expect(subject.decrease_quality).to eq 0
+          expect(item.quality).to eq 0
         end
       end
 
@@ -46,7 +50,7 @@ describe Vault::ItemBehavior do
         let(:item) { Item.new('new item', 10, 99) }
 
         it 'returns (MAX_QUALITY - 1)' do
-          expect(subject.decrease_quality).to eq 49
+          expect(item.quality).to eq 49
         end
       end
     end
