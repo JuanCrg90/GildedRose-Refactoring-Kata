@@ -4,7 +4,7 @@ require_relative './vault/aged_brie'
 require_relative './vault/backstage_pass'
 require_relative './vault/conjured'
 
-# Factory
+# Module to instanciate the itemBehavior of each item
 module Factory
   ITEMS = {
     'Aged Brie' => Vault::AgedBrie,
