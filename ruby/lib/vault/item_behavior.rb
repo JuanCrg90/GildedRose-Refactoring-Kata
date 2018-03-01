@@ -16,7 +16,8 @@ module Vault
     end
 
     def update_quality
-      decrease_quality
+      quality = item.sell_in < 0 ? 2 : 1
+      decrease_quality(quality)
     end
 
     def decrease_sell_in
