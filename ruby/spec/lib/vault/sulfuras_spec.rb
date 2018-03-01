@@ -6,21 +6,12 @@ describe Vault::Sulfuras do
   let(:item) { Item.new('Sulfuras, Hand of Ragnaros', 0, 80) }
 
   describe '#perform' do
-    it 'quality and sell_in never changes' do
-      subject.perform
-      expect(item.sell_in).to eq 0
-      expect(item.quality).to eq 80
-    end
-  end
+    before(:each) { subject.perform }
 
-  describe '#decrease_quality' do
     it 'quality never changes' do
-      subject.decrease_quality
       expect(item.quality).to eq 80
     end
-  end
 
-  describe '#decrease_sell_in' do
     it 'sell_in never changes' do
       expect(item.sell_in).to eq 0
     end

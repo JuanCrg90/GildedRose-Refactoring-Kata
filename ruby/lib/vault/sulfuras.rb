@@ -10,9 +10,7 @@ module Vault
       verify_max_quality
     end
 
-    def decrease_quality; end
-
-    def decrease_sell_in; end
+    def perform; end
 
     private
 
