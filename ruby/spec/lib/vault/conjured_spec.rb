@@ -14,6 +14,13 @@ describe Vault::Conjured do
       it 'quality is is decreased by 2' do
         expect(item.quality).to eq 4
       end
+
+      context 'after the sell limit day' do
+        let(:item) { Item.new('Conjured Mana Cake', -1, 6) }
+        it 'quality is is decreased by 4' do
+          expect(item.quality).to eq 2
+        end
+      end
     end
   end
 end
