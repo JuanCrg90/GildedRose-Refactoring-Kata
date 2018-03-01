@@ -11,8 +11,8 @@ module Vault
     end
 
     def perform
-      update_quality
       decrease_sell_in
+      update_quality
     end
 
     def update_quality
