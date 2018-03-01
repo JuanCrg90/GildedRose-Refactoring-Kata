@@ -35,14 +35,14 @@ module Vault
       item.quality = MIN_QUALITY if item.quality < MIN_QUALITY
     end
 
-    def decrease_quality
+    def decrease_quality(quality = 1)
       return item.quality if item.quality.zero?
-      item.quality -= 1
+      item.quality -= quality
     end
 
-    def increase_quality
+    def increase_quality(quality = 1)
       return item.quality unless item.quality < MAX_QUALITY
-      item.quality += 1
+      item.quality += quality
     end
   end
 end

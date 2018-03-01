@@ -10,10 +10,31 @@ module Vault
     end
 
     def update_quality
-      increase_quality if item.sell_in <= 10
-      increase_quality if item.sell_in <= 5
-      increase_quality
-      item.quality = 0 if item.sell_in < 0
+      return  drop_value if after_concert
+
+      quality = quality_increase
+      increase_quality(quality)
+    end
+
+    private
+
+    def quality_increase
+      case item.sell_in
+      when 0..5
+        3
+      when 6..10
+        2
+      else
+        1
+      end
+    end
+
+    def drop_value
+      item.quality = 0
+    end
+
+    def after_concert
+      item.sell_in < 0
     end
   end
 end
