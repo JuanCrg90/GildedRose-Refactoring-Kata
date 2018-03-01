@@ -20,7 +20,7 @@ module Vault
     end
 
     def decrease_sell_in
-      @item.sell_in -= 1
+      item.sell_in -= 1
     end
 
     protected
@@ -36,13 +36,13 @@ module Vault
     end
 
     def decrease_quality
-      @item.quality -= 1 unless @item.quality.zero?
-      @item.quality
+      return item.quality if item.quality.zero?
+      item.quality -= 1
     end
 
     def increase_quality
-      @item.quality += 1 if @item.quality < MAX_QUALITY
-      @item.quality
+      return item.quality unless item.quality < MAX_QUALITY
+      item.quality += 1
     end
   end
 end
