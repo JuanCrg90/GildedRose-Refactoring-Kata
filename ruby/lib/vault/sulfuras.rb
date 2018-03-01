@@ -7,11 +7,17 @@ module Vault
 
     def initialize(item)
       super(item)
-      @item.quality = MAX_QUALITY if item.quality != MAX_QUALITY
+      verify_max_quality
     end
 
     def decrease_quality; end
 
     def decrease_sell_in; end
+
+    private
+
+    def verify_max_quality
+      item.quality = MAX_QUALITY if item.quality != MAX_QUALITY
+    end
   end
 end

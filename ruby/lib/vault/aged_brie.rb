@@ -8,8 +8,8 @@ module Vault
     end
 
     def update_quality
+      increase_quality if item.sell_in < 0
       increase_quality
-      increase_quality if @item.sell_in < 0
     end
   end
 end
