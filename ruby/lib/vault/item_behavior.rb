@@ -6,8 +6,8 @@ module Vault
 
     def initialize(item)
       @item = item
-      @item.quality = MAX_QUALITY if item.quality > MAX_QUALITY
-      @item.quality = MIN_QUALITY if item.quality < MIN_QUALITY
+      verify_max_quality
+      verify_min_quality
     end
 
     def perform
@@ -24,6 +24,16 @@ module Vault
     end
 
     protected
+
+    attr_reader :item
+
+    def verify_max_quality
+      item.quality = MAX_QUALITY if item.quality > MAX_QUALITY
+    end
+
+    def verify_min_quality
+      item.quality = MIN_QUALITY if item.quality < MIN_QUALITY
+    end
 
     def decrease_quality
       @item.quality -= 1 unless @item.quality.zero?
